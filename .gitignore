@@ -1,4 +1,5 @@
 
 /PostFetcher/bin
 /PostFetcher/obj
-/PostFetcher/PostFetcher.suo
+/PostFetcher/_ReSharper.PostFetcher
+*.suo
