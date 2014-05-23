@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler\E1ResumeHandler.cs" />
+    <Compile Include="Handler\GenericSourceHandler.cs" />
+    <Compile Include="Handler\IHandler.cs" />
+    <Compile Include="Handler\PageableSourceHandler.cs" />
+    <Compile Include="HtmlAgent\Agent.cs" />
+    <Compile Include="HtmlAgent\DOMAgent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
