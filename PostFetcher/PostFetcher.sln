@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostFetcher", "PostFetcher.csproj", "{A29DED52-06A3-43C3-9B7E-96D7E2AB284F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostView", "..\PostView\PostView.csproj", "{02ADEB64-6A10-4BDC-94EC-7ABB83B1DB26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{A29DED52-06A3-43C3-9B7E-96D7E2AB284F}.Debug|x86.Build.0 = Debug|x86
 		{A29DED52-06A3-43C3-9B7E-96D7E2AB284F}.Release|x86.ActiveCfg = Release|x86
 		{A29DED52-06A3-43C3-9B7E-96D7E2AB284F}.Release|x86.Build.0 = Release|x86
+		{02ADEB64-6A10-4BDC-94EC-7ABB83B1DB26}.Debug|x86.ActiveCfg = Debug|x86
+		{02ADEB64-6A10-4BDC-94EC-7ABB83B1DB26}.Debug|x86.Build.0 = Debug|x86
+		{02ADEB64-6A10-4BDC-94EC-7ABB83B1DB26}.Release|x86.ActiveCfg = Release|x86
+		{02ADEB64-6A10-4BDC-94EC-7ABB83B1DB26}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

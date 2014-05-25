@@ -82,9 +82,7 @@
     </Compile>
     <Compile Include="Util.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lib\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>

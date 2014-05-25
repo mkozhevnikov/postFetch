@@ -9,7 +9,7 @@ using PostFetcher.HtmlAgent;
 
 namespace PostFetcher.Handler.News
 {
-    class E1NewsHandler : ModelHandler<Article> {
+    public class E1NewsHandler : ModelHandler<Article> {
         protected DOMAgent Agent = new DOMAgent();
         private string baseUri;
 

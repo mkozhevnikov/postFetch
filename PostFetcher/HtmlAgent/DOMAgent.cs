@@ -6,7 +6,7 @@ using HtmlAgilityPack;
 
 namespace PostFetcher.HtmlAgent
 {
-    class DOMAgent : Agent
+    public class DOMAgent : Agent
     {
         public HtmlDocument GetDOM(string url)
         {

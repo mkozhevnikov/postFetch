@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PostFetcher.Handler
 {
-    abstract class ModelHandler<T> : IHandler<T> where T : class {
+    public abstract class ModelHandler<T> : IHandler<T> where T : class {
         protected readonly DataBase db = new DataBase(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
         
         public abstract void Process(string firstPage);

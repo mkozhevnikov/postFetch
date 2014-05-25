@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 
 namespace PostFetcher.HtmlAgent
 {
-    class Agent
+    public class Agent
     {
         public string LoadPage(string url) {
             try {
