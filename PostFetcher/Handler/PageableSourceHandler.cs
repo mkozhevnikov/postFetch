@@ -7,15 +7,17 @@ using PostFetcher.HtmlAgent;
 
 namespace PostFetcher.Handler
 {
-    abstract class PageableSourceHandler : IHandler
-    {
-        public void Process(DOMAgent agent, string firstPage) {
+    abstract class PageableSourceHandler : IHandler<Article> {
+        protected DOMAgent Agent = new DOMAgent();
+
+        public void Process(string firstPage)
+        {
             var queue = new Queue<string>();
             queue.Enqueue(firstPage);
 //            var counter = 0;
             while (queue.Count != 0) {
                 var currentUrl = queue.Dequeue();
-                var page = agent.GetDOM(currentUrl);
+                var page = Agent.GetDOM(currentUrl);
                 var processedPostCount = ProcessPage(page);
                 if (processedPostCount == 0) return;
                 foreach (var href in GetPagingLinks(page)) {
@@ -23,6 +25,9 @@ namespace PostFetcher.Handler
                 }
             }
         }
+
+        public abstract void Save(Article obj);
+        public abstract bool IsProcessed(Article obj);
 
         protected abstract int ProcessPage(HtmlDocument page);
 

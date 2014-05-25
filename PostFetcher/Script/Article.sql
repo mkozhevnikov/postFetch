@@ -1,6 +1,7 @@
 use master
 if DB_ID('Post') is null
 	create database post
+go
 use post
 go
 if OBJECT_ID('post.dbo.Image') is not null
@@ -11,7 +12,9 @@ if OBJECT_ID('post.dbo.Article') is not null
 go
 create table [dbo].[Article](
 	[ID] [int] IDENTITY(1,1) NOT NULL,
-	[Author] [nvarchar](4000) NULL,
+	[Author] [nvarchar](100) NULL,
+	[Link] [nvarchar](1000) NULL unique,
+	[Section] [nvarchar](1000) NULL,
 	[Created] [datetime] NOT NULL,
 	[Title] [nvarchar](4000) NULL,
 	[Text] text NULL,

@@ -53,8 +53,10 @@
       <HintPath>Lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,10 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBase.cs" />
-    <Compile Include="Handler\E1ResumeHandler.cs" />
     <Compile Include="Handler\GenericSourceHandler.cs" />
     <Compile Include="Handler\IHandler.cs" />
+    <Compile Include="Handler\ModelHandler.cs" />
+    <Compile Include="Handler\News\E1NewsHandler.cs" />
     <Compile Include="Handler\PageableSourceHandler.cs" />
+    <Compile Include="Handler\Resume\E1ResumeHandler.cs" />
     <Compile Include="HtmlAgent\Agent.cs" />
     <Compile Include="HtmlAgent\DOMAgent.cs" />
     <Compile Include="Program.cs" />
@@ -76,6 +80,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Lib\" />
@@ -116,7 +121,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
