@@ -34,6 +34,7 @@ namespace PostView
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadNewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.filter = new System.Windows.Forms.ToolStripTextBox();
             this.importDLL = new System.Windows.Forms.OpenFileDialog();
             this.newsGrid = new System.Windows.Forms.DataGridView();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +42,7 @@ namespace PostView
             this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Created = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.filter = new System.Windows.Forms.ToolStripTextBox();
+            this.поискПоТекстуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newsGrid)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +51,7 @@ namespace PostView
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.поискПоТекстуToolStripMenuItem,
             this.filter});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -69,16 +71,22 @@ namespace PostView
             // importToolStripMenuItem
             // 
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
-            this.importToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.importToolStripMenuItem.Text = "Import DLL";
+            this.importToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.importToolStripMenuItem.Text = "Подключить библиотеку";
             this.importToolStripMenuItem.Click += new System.EventHandler(this.importToolStripMenuItem_Click);
             // 
             // loadNewsToolStripMenuItem
             // 
             this.loadNewsToolStripMenuItem.Name = "loadNewsToolStripMenuItem";
-            this.loadNewsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.loadNewsToolStripMenuItem.Text = "Load News";
+            this.loadNewsToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.loadNewsToolStripMenuItem.Text = "Загрузить новости";
             this.loadNewsToolStripMenuItem.Click += new System.EventHandler(this.loadNewsToolStripMenuItem_Click);
+            // 
+            // filter
+            // 
+            this.filter.Name = "filter";
+            this.filter.Size = new System.Drawing.Size(100, 23);
+            this.filter.TextChanged += new System.EventHandler(this.FilterOnTextChanged);
             // 
             // importDLL
             // 
@@ -126,11 +134,12 @@ namespace PostView
             this.Title.Name = "Title";
             this.Title.ReadOnly = true;
             // 
-            // filter
+            // поискПоТекстуToolStripMenuItem
             // 
-            this.filter.Name = "filter";
-            this.filter.Size = new System.Drawing.Size(100, 23);
-            this.filter.TextChanged += new System.EventHandler(this.FilterOnTextChanged);
+            this.поискПоТекстуToolStripMenuItem.Enabled = false;
+            this.поискПоТекстуToolStripMenuItem.Name = "поискПоТекстуToolStripMenuItem";
+            this.поискПоТекстуToolStripMenuItem.Size = new System.Drawing.Size(111, 23);
+            this.поискПоТекстуToolStripMenuItem.Text = "Поиск по тексту:";
             // 
             // ViewForm
             // 
@@ -164,6 +173,7 @@ namespace PostView
         private System.Windows.Forms.DataGridViewTextBoxColumn Created;
         private System.Windows.Forms.DataGridViewTextBoxColumn Title;
         private System.Windows.Forms.ToolStripTextBox filter;
+        private System.Windows.Forms.ToolStripMenuItem поискПоТекстуToolStripMenuItem;
     }
 }
 

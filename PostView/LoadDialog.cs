@@ -13,11 +13,14 @@ using PostFetcher.Model;
 
 namespace PostView
 {
-    public partial class LoadDialog : Form
-    {
-        public LoadDialog()
+    public partial class LoadDialog : Form {
+        private ViewForm parent;
+        public LoadDialog(ViewForm viewForm)
         {
             InitializeComponent();
+            parent = viewForm;
+            
+            //составляю выборка из классов обработчиков
             var type = typeof(IHandler<Article>);
             var types = AppDomain.CurrentDomain.GetAssemblies()
                                  .SelectMany(s => s.GetTypes())
@@ -30,12 +33,13 @@ namespace PostView
             try {
                 var type = handler.SelectedItem as Type;
                 if (type != null) {
-//                    ConfigurationManager.ConnectionStrings["post"]
-//                    var parser = (IHandler<Article>) Activator.CreateInstance(type);
-                    var parser = (IHandler<Article>) type.GetConstructor(new Type[] { }).Invoke(new object[] { });
+                    //создаю экземпляр класса обработчика
+                    var parser = (IHandler<Article>) Activator.CreateInstance(type);
+//                    var parser = (IHandler<Article>) type.GetConstructor(new Type[] { }).Invoke(new object[] { });
                     parser.Process(firstPage.Text);
                     MessageBox.Show("Новости загружены");
                     Close();
+                    parent.RefreshGrid();
                 }
             }
             catch (Exception ex) {

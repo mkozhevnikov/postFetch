@@ -19,7 +19,8 @@ namespace PostView
         public ViewForm()
         {
             InitializeComponent();
-            newsGrid.DataSource = new BindingSource {DataSource = db.Article};
+//            RefreshGrid();
+            newsGrid.DataSource = new BindingSource { DataSource = db.Article };
             newsGrid.DataBindingComplete += NewsGridOnDataBindingComplete;
         }
 
@@ -30,8 +31,7 @@ namespace PostView
             catch (Exception) {}
         }
 
-        private void importToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void importToolStripMenuItem_Click(object sender, EventArgs e) {
             Stream myStream = null;
             OpenFileDialog importDlg = new OpenFileDialog {
                 InitialDirectory = "c:\\",
@@ -40,13 +40,11 @@ namespace PostView
                 RestoreDirectory = true
             };
 
-            if (importDlg.ShowDialog() == DialogResult.OK)
-            {
+            if (importDlg.ShowDialog() == DialogResult.OK) {
                 try {
                     Assembly.LoadFile(importDlg.FileName);
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
@@ -54,19 +52,23 @@ namespace PostView
 
         private void loadNewsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new LoadDialog().Show();
+            new LoadDialog(this).Show();
         }
 
         private void FilterOnTextChanged(object sender, EventArgs eventArgs) {
             if (string.Empty.Equals(filter.Text)) {
-                Update();
+                RefreshGrid();
                 return;
             }
+            //результат полнотекстового поиска упорядченный по рангу поиска
             var query = from a in db.FullTextSearch(filter.Text) orderby a.Rank select a;
             newsGrid.DataSource = query.ToList();
         }
 
-        public void Update() {
+        /// <summary>
+        /// Обновляет грид данных
+        /// </summary>
+        public void RefreshGrid() {
             var query = from a in db.Article select a;
             newsGrid.DataSource = query.ToList();
         }
