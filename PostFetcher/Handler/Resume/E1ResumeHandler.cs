@@ -12,15 +12,6 @@ namespace PostFetcher.Handler.Resume
     {
         private const string RabotaE1 = "http://rabota.e1.ru";
         private const string E1Resume = RabotaE1 + "/resume";
-        private static HashSet<string> _processed = new HashSet<string>();
-
-        public override void Save(Article obj) {
-            throw new NotImplementedException();
-        }
-
-        public override bool IsProcessed(Article obj) {
-            throw new NotImplementedException();
-        }
 
         protected override int ProcessPage(HtmlDocument page) {
             var doc = Agent.GetDOM(E1Resume);
@@ -29,16 +20,25 @@ namespace PostFetcher.Handler.Resume
             if (nodeCollection != null) {
                 foreach (var node in nodeCollection) {
                     var href = node.GetAttributeValue("href", "");
+                    var resume = new Model.Resume {Link = href};
+                    if (IsProcessed(resume)) continue;
                     Console.WriteLine(href);
-                    ProcessResumePage(href, ref count);
+                    ProcessResumePage(ref resume);
+                    Save(resume);
+                    count++;
                 }
             }
             return count;
         }
 
-        private void ProcessResumePage(string resumeLink, ref int count) {
-            var document = Agent.GetDOM(RabotaE1 + resumeLink);
-            _processed.Add(resumeLink);
+        protected override IEnumerable<string> GetPagingLinks(HtmlDocument page) {
+            throw new NotImplementedException();
+        }
+
+        private void ProcessResumePage(ref Model.Resume resume) {
+            var document = Agent.GetDOM(RabotaE1 + resume);
+            //parse page
+            Save(resume);
         }
     }
 }

@@ -9,12 +9,14 @@ namespace PostFetcher.Handler
 {
     abstract class GenericSourceHandler : PageableSourceHandler
     {
-        protected override int ProcessPage(HtmlDocument page) {
-            throw new NotImplementedException();
+        protected static HashSet<string> _processed = new HashSet<string>();
+
+        public override void Save(Model.Resume obj) {
+            _processed.Add(obj.Link);
         }
 
-        protected override IEnumerable<string> GetPagingLinks(HtmlDocument page) {
-            throw new NotImplementedException();
+        public override bool IsProcessed(Model.Resume obj) {
+            return _processed.Contains(obj.Link);
         }
     }
 }

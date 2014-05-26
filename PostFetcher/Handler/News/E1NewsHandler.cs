@@ -35,7 +35,7 @@ namespace PostFetcher.Handler.News
                     };
                     if (IsProcessed(article)) continue;
                     Console.WriteLine(article.Title);
-                    ProcessNewsPage(href, ref article);
+                    ProcessNewsPage(ref article);
                     Save(article);
                 }
             }
@@ -57,8 +57,8 @@ namespace PostFetcher.Handler.News
             return db.Article.Any(art => art.Link == obj.Link);
         }
 
-        private void ProcessNewsPage(string newsLink, ref Article article) {
-            var document = Agent.GetDOM(newsLink);
+        private void ProcessNewsPage(ref Article article) {
+            var document = Agent.GetDOM(article.Link);
             var textElement = document.DocumentNode.SelectSingleNode("//div[@id='newscontent']");
             if (textElement != null) {
                 //обработка текста статьи

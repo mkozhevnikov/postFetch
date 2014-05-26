@@ -8,14 +8,13 @@ using PostFetcher.Model;
 
 namespace PostFetcher.Handler
 {
-    abstract class PageableSourceHandler : IHandler<Article> {
+    abstract class PageableSourceHandler : IHandler<Model.Resume> {
         protected DOMAgent Agent = new DOMAgent();
 
         public void Process(string firstPage)
         {
             var queue = new Queue<string>();
             queue.Enqueue(firstPage);
-//            var counter = 0;
             while (queue.Count != 0) {
                 var currentUrl = queue.Dequeue();
                 var page = Agent.GetDOM(currentUrl);
@@ -27,11 +26,22 @@ namespace PostFetcher.Handler
             }
         }
 
-        public abstract void Save(Article obj);
-        public abstract bool IsProcessed(Article obj);
+        public abstract void Save(Model.Resume obj);
+        
+        public abstract bool IsProcessed(Model.Resume obj);
 
+        /// <summary>
+        /// Обрабатывает страницу с разными резюме
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns>Количество обработанных резюме</returns>
         protected abstract int ProcessPage(HtmlDocument page);
 
+        /// <summary>
+        /// Извлекает paging ссылки 
+        /// </summary>
+        /// <param name="page"></param>
+        /// <returns></returns>
         protected abstract IEnumerable<string> GetPagingLinks(HtmlDocument page);
     }
 }
