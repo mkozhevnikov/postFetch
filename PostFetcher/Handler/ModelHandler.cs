@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using PostFetcher.Model;
 
 namespace PostFetcher.Handler
 {
     public abstract class ModelHandler<T> : IHandler<T> where T : class {
-        protected readonly DataBase db = new DataBase(ConfigurationManager.ConnectionStrings["post"].ConnectionString);
+        protected readonly DataBase db = new DataBase();
         
         public abstract void Process(string firstPage);
         

@@ -6,15 +6,21 @@ using System.Text;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 using PostFetcher.HtmlAgent;
+using PostFetcher.Model;
 
 namespace PostFetcher.Handler.News
 {
     public class E1NewsHandler : ModelHandler<Article> {
+        private const string defaultUri = "http://www.e1.ru/news/";
         protected DOMAgent Agent = new DOMAgent();
         private string baseUri;
 
-        public override void Process(string firstPage = "http://www.e1.ru/news/") {
+        public override void Process(string firstPage = defaultUri) {
+            //обрабатываем входные параметры
+            if (string.Empty.Equals(firstPage))
+                firstPage = defaultUri;
             baseUri = new Uri(firstPage).GetLeftPart(UriPartial.Authority);
+            
             var document = Agent.GetDOM(firstPage);
             var nodeCollection = document.DocumentNode.SelectNodes("//a[@class='news']");
             if (nodeCollection != null) {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using PostFetcher.HtmlAgent;
+using PostFetcher.Model;
 
 namespace PostFetcher.Handler
 {

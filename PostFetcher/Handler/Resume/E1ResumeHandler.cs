@@ -4,6 +4,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using HtmlAgilityPack;
+using PostFetcher.Model;
 
 namespace PostFetcher.Handler.Resume
 {

@@ -1,4 +1,6 @@
-﻿namespace PostView
+﻿using System;
+
+namespace PostView
 {
     partial class ViewForm
     {
@@ -33,16 +35,25 @@
             this.importToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadNewsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importDLL = new System.Windows.Forms.OpenFileDialog();
+            this.newsGrid = new System.Windows.Forms.DataGridView();
+            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Link = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Created = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.filter = new System.Windows.Forms.ToolStripTextBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.newsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.filter});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(601, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1099, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -52,7 +63,7 @@
             this.importToolStripMenuItem,
             this.loadNewsToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 23);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // importToolStripMenuItem
@@ -73,17 +84,67 @@
             // 
             this.importDLL.FileName = "openFileDialog1";
             // 
+            // newsGrid
+            // 
+            this.newsGrid.AllowUserToAddRows = false;
+            this.newsGrid.AllowUserToDeleteRows = false;
+            this.newsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.newsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newsGrid.Location = new System.Drawing.Point(0, 27);
+            this.newsGrid.Name = "newsGrid";
+            this.newsGrid.ReadOnly = true;
+            this.newsGrid.Size = new System.Drawing.Size(1099, 742);
+            this.newsGrid.TabIndex = 1;
+            // 
+            // Author
+            // 
+            this.Author.HeaderText = "Автор";
+            this.Author.Name = "Author";
+            this.Author.ReadOnly = true;
+            // 
+            // Link
+            // 
+            this.Link.HeaderText = "Ссылка на оригинал";
+            this.Link.Name = "Link";
+            this.Link.ReadOnly = true;
+            // 
+            // Section
+            // 
+            this.Section.HeaderText = "Рубрика";
+            this.Section.Name = "Section";
+            this.Section.ReadOnly = true;
+            // 
+            // Created
+            // 
+            this.Created.HeaderText = "Дата создания";
+            this.Created.Name = "Created";
+            this.Created.ReadOnly = true;
+            // 
+            // Title
+            // 
+            this.Title.HeaderText = "Заголовок";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            // 
+            // filter
+            // 
+            this.filter.Name = "filter";
+            this.filter.Size = new System.Drawing.Size(100, 23);
+            this.filter.TextChanged += new System.EventHandler(this.FilterOnTextChanged);
+            // 
             // ViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(601, 481);
+            this.ClientSize = new System.Drawing.Size(1099, 769);
+            this.Controls.Add(this.newsGrid);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ViewForm";
             this.Text = "ViewForm";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.newsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -96,6 +157,13 @@
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog importDLL;
         private System.Windows.Forms.ToolStripMenuItem loadNewsToolStripMenuItem;
+        private System.Windows.Forms.DataGridView newsGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Link;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Created;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.ToolStripTextBox filter;
     }
 }
 

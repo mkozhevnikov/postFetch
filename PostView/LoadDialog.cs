@@ -9,6 +9,7 @@ using System.Text;
 using System.Windows.Forms;
 using PostFetcher;
 using PostFetcher.Handler;
+using PostFetcher.Model;
 
 namespace PostView
 {
@@ -25,7 +26,6 @@ namespace PostView
             handler.Items.AddRange(types.Select(t => (object)t).ToArray());
         }
 
-        //todo получить доступ к файлу конфигураций из другой сборки
         private void button1_Click(object sender, EventArgs e) {
             try {
                 var type = handler.SelectedItem as Type;
@@ -33,7 +33,9 @@ namespace PostView
 //                    ConfigurationManager.ConnectionStrings["post"]
 //                    var parser = (IHandler<Article>) Activator.CreateInstance(type);
                     var parser = (IHandler<Article>) type.GetConstructor(new Type[] { }).Invoke(new object[] { });
-                    parser.Process(firstPage.Text.Equals(string.Empty) ? null : firstPage.Text);
+                    parser.Process(firstPage.Text);
+                    MessageBox.Show("Новости загружены");
+                    Close();
                 }
             }
             catch (Exception ex) {
